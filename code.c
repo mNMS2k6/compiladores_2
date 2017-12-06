@@ -76,13 +76,15 @@ int mkStackContains(char * v, Stack st)
 Instr head(InstrList l)
 {
 	if(l != NULL)
-		return(l->inst);
+	  return(l->inst);
+	return NULL;
 }
 
 InstrList tail(InstrList l)
 {
 	if(l != NULL)
-		return(l->next); 
+		return(l->next);
+	return NULL;
 }
 
 Instr last(InstrList l)
@@ -113,7 +115,7 @@ InstrList append(InstrList l1, InstrList l2)
 	if(l2 == NULL)
 		return l1;
 
-	for(p = l1; tail(p) != NULL; p = tail(p));
+	for(p = l1; tail(p) != NULL; p = tail(p)){}
 		p->next = l2;
 	return l1;
 }

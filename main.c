@@ -29,9 +29,9 @@ int main(int argc, char** argv)
     while(root != NULL)
     {
       countVar = 0;
-      listToPrint = append(listToPrint, Commands(root->head));
+      /*listToPrint = append(listToPrint, Commands(root->head));
       Instr inst = C_mkInstr(C_SPACE, NULL, NULL, NULL);
-      listToPrint = append(listToPrint, C_mkInstrList(inst, NULL));
+      listToPrint = append(listToPrint, C_mkInstrList(inst, NULL));*/
       root = root->tail;
     }
 
