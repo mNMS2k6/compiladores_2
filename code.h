@@ -1,26 +1,9 @@
 #ifndef __code_h__
 #define __code_h__
 
-typedef enum
-  {
-    C_INT,
-    C_VAR,
-  } AddrKind; 
 
-typedef struct _Address
+typedef enum
 {
-  AddrKind kind;
-
-  union
-  {
-    int val;
-    char *var;
-  } content;
-  
-} *Address;
-
-typedef enum
-  {
     C_ADD, // add $t0 = $t1 + $t2 (add	$t0,$t1,$t2)
     C_SUB, // sub $t2 = $t3 Ð $t4 (sub	$t2,$t3,$t4)
     C_DIV, // Lo = $t5 / $t6 Hi = $t5 mod $t6 (div	$t5,$t6)
@@ -60,15 +43,70 @@ typedef enum
     C_SW, // store word in source register into RAM destination (sw	register_source, RAM_destination)
     C_MOVE, // move $t2 = $t3 (move	$t2,$t3)
     C_J,
-  
+
     C_SYSCALL,
     C_LABEL,
     C_SPACE
 
   } OpKind;
 
+  typedef enum
+  {
+    C_INT,
+    C_VAR,
+  } AddrKind; 
+
+  typedef struct _Address
+  {
+    AddrKind kind;
+
+    union
+    {
+      int val;
+      char *var;
+    } content;
+
+  } *Address;
+
+  typedef struct _Instr
+  {
+    OpKind op;
+    Address addr1, addr2, addr3;
+  } *Instr;
+
+  typedef struct _InstrList
+  {
+    Instr inst;
+    struct _InstrList *next;
+  } *InstrList;
+
+  typedef struct _Pair
+  {
+    Address name;
+    InstrList list;
+  } *Pair;
+
+  typedef struct _Stack
+  {
+    char *var;
+    struct _Stack *next;
+  } *Stack;
+
+  Address mkInt(int i);
+  Address mkVar(char *v);
+  Instr mkInstr(OpKind op, Address a1, Address a2, Address a3);
+  InstrList mkInstrList(Instr head, InstrList tail);
+  Pair mkPair(Address a, InstrList i);
+  Stack mkStack(char * v, Stack st);
+  int mkStackContains(char * v, Stack st); // verificar se string v pertence á stack, 1 sim 0 não
 
 
-Address mkInt(int i);
-Address mkVar(char *v);
+  ////////////////////////////////////////////////////////////////////////////////////////////////////
+  //     metodos para aceder, alterar e verificar Intructions e Listas de Instructions              //
+  ////////////////////////////////////////////////////////////////////////////////////////////////////
+  InstrList append(InstrList l1, InstrList l2);
+  InstrList tail(InstrList l);
+  Instr last(InstrList l);
+  InstrList removeLast(InstrList list);
+
 #endif
