@@ -1,50 +1,10 @@
-func main() {
-	fmt.Scan(&i);
-	sum := 0;
-	for i := 0; i >= 10; i:=i+1 
-	{
-		sum :=sum + i;
-		sum :=sum + i;
-		sum :=sum + i;
-		for i := 0; i > 10; i:=i+1 
-		{
-			
-			if o<=a
-			{
-				var b;
-			}
-			else
-			{
-				var a;
-			}
-			sum :=sum + i;
-			sum :=sum + i;
-		}
-	}
-}
-
-func ola()
+func main()
 {
-	fmt.Scan(&i);
-	sum := 0;
-	for i := 0; i >= 10; i:=i+1 
+	var a;
+	var i;
+	for i < 100
 	{
-		sum :=sum + i;
-		sum :=sum + i;
-		sum :=sum + i;
-		for i := 0; i > 10; i:=i+1 
-		{
-			
-			if o<=a
-			{
-				var b;
-			}
-			else
-			{
-				var a;
-			}
-			sum :=sum + i;
-			sum :=sum + i;
-		}
-	}
+		a:= 1;
+		i := 101;
+	}	
 }

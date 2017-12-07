@@ -2,6 +2,7 @@
 #include "parser.h"
 #include "code.h"
 
+Stack stack = NULL;
 FILE *f;
 
 #include "printer.h"
@@ -25,20 +26,24 @@ int main(int argc, char** argv)
   if (yyparse() == 0) 
   {
     f = fopen("mips.txt", "w");
+    
     cmdList newroot = root->head->body;
+
     while(newroot != NULL)
     {
+
       countVar = 0;
       listToPrint = append(listToPrint, Commands(newroot->head));
       Instr inst = mkInstr(C_SPACE, NULL, NULL, NULL);
       listToPrint = append(listToPrint, mkInstrList(inst, NULL));
+
       newroot = newroot->tail;
     }
-
+    
     printStack(stack);
     printInstrList(listToPrint);
     printExit();
-
+    
     fclose(f);
   }
 

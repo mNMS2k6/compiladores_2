@@ -84,7 +84,7 @@ typedef enum
   {
     Address name;
     InstrList list;
-  } *Pair;
+  } *Pair;  
 
   typedef struct _Stack
   {
