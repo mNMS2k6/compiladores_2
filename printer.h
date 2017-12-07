@@ -144,7 +144,7 @@ void printInstr(Instr inst)
       printAddress(inst->addr3);
       fprintf(f, "\n");
     }
-  else // Só dois campos em mips
+  else // Sao dois campos em mips
     {
       fprintf(f, "\n");
     }

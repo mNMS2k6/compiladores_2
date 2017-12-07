@@ -43,7 +43,7 @@ void eval(Expr expr)
       case MOD:
       printf(" %% ");
       break;
-      // TODO Other cases here ...
+      // Other cases here ...
       default: yyerror("Unknown operator!");
     }
     eval(expr->attr.op.right);
